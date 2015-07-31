@@ -1,61 +1,61 @@
 package com.ivanparraga.rhinoembeddedexample;
 
-
 public class EcmaValue {
-	private String valueStr;
-	private Number valueNumber;
 
-	public static EcmaValue create(Object value) {
-		if (value instanceof String) {
-			return new EcmaValue((String) value);
-		}
+  private String valueStr;
+  private Number valueNumber;
 
-		if (value instanceof Number) {
-			return new EcmaValue((Number) value);
-		}
+  public static EcmaValue create(Object value) {
+    if (value instanceof String) {
+      return new EcmaValue((String) value);
+    }
 
-		throw new IllegalArgumentException("Unexpected object class");
-	}
+    if (value instanceof Number) {
+      return new EcmaValue((Number) value);
+    }
 
-	private EcmaValue(String value) {
-		valueStr = value;
-	}
+    throw new IllegalArgumentException("Unexpected object class");
+  }
 
-	private EcmaValue(Number value) {
-		valueNumber = value;
-	}
+  private EcmaValue(String value) {
+    valueStr = value;
+  }
 
-	public String getString() {
-		if (valueStr == null) {
-			throw new IllegalStateException("This value is not an String");
-		}
+  private EcmaValue(Number value) {
+    valueNumber = value;
+  }
 
-		return valueStr;
-	}
+  public String getString() {
+    if (valueStr == null) {
+      throw new IllegalStateException("This value is not an String");
+    }
 
-	public boolean isString() {
-		return valueStr != null;
-	}
+    return valueStr;
+  }
 
-	public Number getNumber() {
-		if (valueNumber == null) {
-			throw new IllegalStateException("This value is not an Number");
-		}
+  public boolean isString() {
+    return valueStr != null;
+  }
 
-		return valueNumber;
-	}
+  public Number getNumber() {
+    if (valueNumber == null) {
+      throw new IllegalStateException("This value is not an Number");
+    }
 
-	public boolean isNumber() {
-		return valueNumber != null;
-	}
+    return valueNumber;
+  }
 
-	public Object getValue() {
-		if (isNumber()) {
-			return valueNumber;
-		} else if (isString()) {
-			return valueStr;
-		}
+  public boolean isNumber() {
+    return valueNumber != null;
+  }
 
-		throw new IllegalStateException();
-	}
+  public Object getValue() {
+    if (isNumber()) {
+      return valueNumber;
+    } else if (isString()) {
+      return valueStr;
+    }
+
+    throw new IllegalStateException();
+  }
 }
